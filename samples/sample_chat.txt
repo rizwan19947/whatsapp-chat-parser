@@ -1,0 +1,44 @@
+[10/01/2024, 08:30:15] JD: ‎Messages and calls are end-to-end encrypted. Only people in this chat can read, listen to, or share them.
+[10/01/2024, 08:30:45] JD: Good morning!
+[10/01/2024, 08:31:20] MK: Morning! How are you?
+[10/01/2024, 08:32:10] JD: I'm good, thanks
+[10/01/2024, 08:32:25] JD: Did you see the email about the meeting?
+[10/01/2024, 08:35:40] MK: Yes, I just checked it
+[10/01/2024, 08:36:00] MK: It's scheduled for tomorrow at 3pm
+[10/01/2024, 08:40:15] JD: Okay great
+[10/01/2024, 08:40:30] JD: I'll prepare the documents tonight
+[10/01/2024, 09:15:22] MK: Sounds good
+[10/01/2024, 09:15:40] MK: Let me know if you need any help
+[10/01/2024, 10:22:18] JD: Will do, thanks!
+[10/01/2024, 14:45:30] MK: Hey, quick question
+[10/01/2024, 14:45:45] MK: Do you have the report from last week?
+[10/01/2024, 14:50:12] JD: Yes, I have it
+[10/01/2024, 14:50:25] JD: I'll send it over in a few minutes
+[10/01/2024, 14:55:38] MK: Perfect, thank you
+[11/01/2024, 09:00:20] JD: Good morning
+[11/01/2024, 09:05:15] MK: Morning!
+[11/01/2024, 09:05:30] MK: Ready for the meeting today?
+[11/01/2024, 09:10:45] JD: Yes, all set
+[11/01/2024, 09:11:00] JD: Finished the presentation last night
+[11/01/2024, 09:15:20] MK: Excellent
+[11/01/2024, 09:15:35] MK: I reviewed the budget numbers
+[11/01/2024, 09:15:50] MK: Everything looks good
+[11/01/2024, 09:20:10] JD: Great, see you at 3pm then
+[11/01/2024, 09:20:25] MK: See you!
+[11/01/2024, 15:30:40] MK: That went well!
+[11/01/2024, 15:31:10] JD: Yes, I think they were happy with our proposal
+[11/01/2024, 15:31:45] MK: Definitely
+[11/01/2024, 15:32:00] MK: Good work on the presentation
+[11/01/2024, 15:35:20] JD: Thanks! You too with the budget analysis
+[11/01/2024, 15:35:40] JD: Team effort!
+[11/01/2024, 15:36:15] MK: Absolutely
+[12/01/2024, 08:20:10] JD: Morning
+[12/01/2024, 08:25:30] MK: Hey
+[12/01/2024, 08:25:45] MK: Did you get the follow-up email?
+[12/01/2024, 08:30:20] JD: Just saw it
+[12/01/2024, 08:30:35] JD: They want to schedule another meeting next week
+[12/01/2024, 08:35:50] MK: Works for me
+[12/01/2024, 08:36:10] MK: Same time?
+[12/01/2024, 08:40:25] JD: Yes, Tuesday at 3pm
+[12/01/2024, 08:40:40] JD: I'll confirm it
+[12/01/2024, 08:45:15] MK: Okay, thanks
