@@ -1,6 +1,6 @@
 import re
 from datetime import datetime
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Callable
 
 
 class WhatsAppMessage:
@@ -28,14 +28,20 @@ class WhatsAppChatParser:
         self.file_path = file_path
         self.messages: List[WhatsAppMessage] = []
 
-    def parse(self) -> List[WhatsAppMessage]:
-        """Parse the WhatsApp chat file and return list of messages"""
+    def parse(self, progress_callback: Optional[Callable[[int, int], None]] = None) -> List[WhatsAppMessage]:
+        """
+        Parse the WhatsApp chat file and return list of messages
+
+        Args:
+            progress_callback: Optional callback function(current, total) for progress reporting
+        """
         with open(self.file_path, 'r', encoding='utf-8') as file:
             lines = file.readlines()
 
         current_message: Optional[WhatsAppMessage] = None
+        total_lines = len(lines)
 
-        for line in lines:
+        for idx, line in enumerate(lines, 1):
             line = line.rstrip('\n')
             match = self.MESSAGE_PATTERN.match(line)
 
@@ -63,9 +69,17 @@ class WhatsAppChatParser:
                 # This is a continuation of the previous message (multi-line)
                 current_message.content += "\n" + line
 
+            # Report progress (every 100 lines to avoid overhead)
+            if progress_callback and idx % 100 == 0:
+                progress_callback(idx, total_lines)
+
         # Don't forget the last message
         if current_message:
             self.messages.append(current_message)
+
+        # Report final progress
+        if progress_callback:
+            progress_callback(total_lines, total_lines)
 
         return self.messages
 

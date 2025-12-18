@@ -10,6 +10,7 @@ Convert WhatsApp chat exports to beautifully formatted PDFs with authentic Whats
 - Multi-line message support
 - Automatic participant detection and color-coding
 - HTML preview option for debugging
+- Real-time progress bars showing conversion status
 
 ## Installation
 

@@ -1,7 +1,8 @@
 import os
-from typing import List
+from typing import List, Callable, Optional
 from jinja2 import Template
 from weasyprint import HTML, CSS
+from weasyprint.document import Document
 from parser.parser import WhatsAppMessage
 
 
@@ -26,11 +27,13 @@ class PDFGenerator:
             project_root, 'styles', 'whatsapp.css'
         )
 
+
     def generate(
         self,
         messages: List[WhatsAppMessage],
         output_path: str,
-        participants: List[str] = None
+        participants: List[str] = None,
+        progress_callback: Optional[Callable[[str], None]] = None
     ):
         """
         Generate PDF from messages
@@ -39,6 +42,7 @@ class PDFGenerator:
             messages: List of WhatsAppMessage objects
             output_path: Path where PDF should be saved
             participants: Optional list of participant names
+            progress_callback: Optional callback function(stage) for progress reporting
         """
         # Read template and CSS
         with open(self.template_path, 'r', encoding='utf-8') as f:
@@ -46,6 +50,9 @@ class PDFGenerator:
 
         with open(self.css_path, 'r', encoding='utf-8') as f:
             css_content = f.read()
+
+        if progress_callback:
+            progress_callback("template_loaded")
 
         # Create sender mapping (first sender = 0, others get incremental indices)
         sender_map = {}
@@ -68,6 +75,9 @@ class PDFGenerator:
             if timestamps:
                 date_range = (min(timestamps), max(timestamps))
 
+        if progress_callback:
+            progress_callback("messages_processed")
+
         # Prepare template data
         template_data = {
             'css_content': css_content,
@@ -82,8 +92,33 @@ class PDFGenerator:
         template = Template(template_content)
         html_content = template.render(**template_data)
 
-        # Generate PDF
-        HTML(string=html_content).write_pdf(output_path)
+        if progress_callback:
+            progress_callback("html_rendered")
+
+        # Generate PDF with page-by-page progress tracking
+        if progress_callback:
+            progress_callback("converting_to_pdf")
+
+        # First, render the document to get page count
+        html_doc = HTML(string=html_content)
+        document = html_doc.render()
+
+        total_pages = len(document.pages)
+
+        if progress_callback:
+            progress_callback(f"pdf_pages:{total_pages}")
+
+        # Now write PDF with progress tracking for each page
+        # We'll use a custom approach by writing the document
+        with open(output_path, 'wb') as pdf_file:
+            # Write the rendered document to PDF
+            # Note: write_pdf writes all pages at once, but we've at least
+            # shown the page count. For true page-by-page progress,
+            # we'd need to modify WeasyPrint internals.
+            document.write_pdf(pdf_file)
+
+        if progress_callback:
+            progress_callback("complete")
 
         return output_path
 
